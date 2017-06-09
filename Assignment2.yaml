@@ -1,0 +1,410 @@
+swagger: "2.0"
+info:
+  description: "Starwars API."
+  version: "1.0.0"
+  title: "SWAPI"
+
+tags:
+- name: "Vehicle"
+  description: "Everything about your Vehicle"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "People"
+  description: "Everything about your People"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"    
+- name: "Starship"
+  description: "Everything about your Starship"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "Species"
+  description: "Everything about your Species"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+    
+schemes:
+- "http"
+paths:
+  
+  /Vehicle:
+    get:
+      tags:
+      - "Vehicle"
+      summary: "Find list of vehicles"
+      description: "Returns a List of vehicle"
+      operationId: "getVehicles"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+             $ref: "#/definitions/Vehicle"
+  /Vehicle/{VehicleId}:
+    get:
+      tags:
+      - "Vehicle"
+      summary: "Find Vehicle by ID"
+      description: "Returns a single vehicle"
+      operationId: "getVehicleById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "VehicleId"
+        in: "path"
+        description: "ID of Vehicle to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Vehicle"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Vehicle not found"
+  /Vehicle/schema:
+    get:
+      tags:
+      - "Vehicle"
+      summary: "Find Vehicle Schema"
+      description: "Returns a json schema"
+      operationId: "getschema"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Vehicle"
+  /People:
+    get:
+      tags:
+      - "People"
+      summary: "Find list of People"
+      description: "get all the people resources"
+      operationId: "getpeople"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/people"
+  /People/{PeopleId}:
+    get:
+      tags:
+      - "People"
+      summary: "Find peoplee by ID"
+      description: "get a specific people resource"
+      operationId: "getpeopleById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "PeopleId"
+        in: "path"
+        description: "ID of people to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/people"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Peoplele not found"
+  /People/schema:
+    get:
+      tags:
+      - "People"
+      summary: "Return Schema"
+      description: "Returns a json Schema"
+      operationId: "getPeopleSchema"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/people"
+  /starship:
+    get:
+      tags:
+      - "Starship"
+      summary: "Find list of starships"
+      description: "Returns a List of starship"
+      operationId: "getstarships"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/starship"
+  /starship/{starshipId}:
+    get:
+      tags:
+      - "Starship"
+      summary: "Find starship by ID"
+      description: "Returns a single starship"
+      operationId: "getstarshipById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "starshipId"
+        in: "path"
+        description: "ID of starship to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/starship"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "starship not found"
+  /starship/schema:
+    get:
+      tags:
+      - "Starship"
+      summary: "Find starship by ID"
+      description: "Returns a json schema"
+      operationId: "getStarshipSchema"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/starship"
+            
+  /species:
+    get:
+      tags:
+      - "Species"
+      summary: "Find list of species"
+      description: "get all the species resources"
+      operationId: "getspecies"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/species"
+  /species/{speciesId}:
+    get:
+      tags:
+      - "Species"
+      summary: "Find speciese by ID"
+      description: "get a specific species resource"
+      operationId: "getspeciesById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "speciesId"
+        in: "path"
+        description: "ID of species to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/species"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "speciesle not found"
+  /species/schema:
+    get:
+      tags:
+      - "Species"
+      summary: "Return Schema"
+      description: "Returns a json Schema"
+      operationId: "getSpeciesschema"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/species"
+  
+definitions:
+  Vehicle:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      model:
+        type: "string"
+        example: "All-Terrain Attack Transport"
+      Vehicle_Class:
+        type: "string"
+      name:
+        type: "string"
+        example: "speeder bike"
+      Manufacturer:
+        type: "string"
+      Length:
+        type: "integer"
+        format: "int32"
+      cost_in_credits:
+        type: "string"
+      max_atmospheric_speed:
+        type: "string"
+      cargo-capacity:
+        type: "string"
+      consumables:
+        type: "string"
+      films:
+        type: "string"
+      pilots:
+        type: "string"
+      url:
+        type: "string"
+      credited:
+        type: "string"
+      edited:
+        type: "string"
+
+  people:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+        example: "Shiv"
+      birth_year:
+        type: "string"
+      eye_color:
+        type: "string"
+      gender:
+        type: "string"
+      hair_color:
+        type: "string"
+      height:
+        type: "string"
+      mass:
+        type: "string"
+      skin_color:
+        type: "string"
+      homeworld:
+        type: "string"
+      films:
+        type: "array"
+        example: "http://swapi.co/api/planets/1/"
+      species:
+        type: "array"
+        example: "http://swapi.co/api/species/1/"
+      starships:
+        type: "array"
+        example: "http://swapi.co/api/starships/12/"
+      vehicles:
+        type: "array"
+        example: "http://swapi.co/api/vehicles/14/"
+      url:
+        type: "string"
+      created:
+        type: "string"
+      edited:
+        type: "string"
+        
+  starship:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      model:
+        type: "string"
+        example: "T-65 X-wing"
+      starship_Class:
+        type: "string"
+        example: "Starfighter"
+      name:
+        type: "string"
+        example: "Death Star"
+      Manufacturer:
+        type: "string"
+      Length:
+        type: "integer"
+        format: "int32"
+      cost_in_credits:
+        type: "string"
+      max_atmospheric_speed:
+        type: "string"
+      hyperdrive_rating:
+        type: "string"
+      MGLT:
+        type: "string"
+      cargo-capacity:
+        type: "string"
+      consumables:
+        type: "string"
+      films:
+        type: "string"
+      pilots:
+        type: "string"
+      url:
+        type: "string"
+      credited:
+        type: "string"
+      edited:
+        type: "string"
+        
+  species:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+        example: "mammal"
+      classification:
+        type: "string"
+        example: "senitent"
+      average_lifespan:
+        type: "string"
+      eye_color:
+        type: "string"
+      hair_color:
+        type: "string"
+      skin_color:
+        type: "string"
+      average_height:
+        type: "string"
+      mass:
+        type: "string"
+      language:
+        type: "string"
+      homeworld:
+        type: "string"
+      films:
+        type: "array"
+        example: "http://swapi.co/api/films/1/"
+      species:
+        type: "array"
+        example: "http://swapi.co/api/species/1/"
+      url:
+        type: "string"
+      created:
+        type: "string"
+      edited:
+        type: "string"
