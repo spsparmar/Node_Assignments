@@ -1,0 +1,122 @@
+swagger: "2.0"
+info:
+  description: "The Search API is optimized to help you find the specific item you're looking for (e.g., a specific user, a specific file in a repository, etc.)."
+  version: "1.0.0"
+  title: "Git Hub Search"
+host: "developer.github.com"
+basePath: "/v3/search"
+tags:
+- name: "Repositories"
+  description: "Explore Search Repositories"
+schemes:
+- "http"
+paths:
+  /Repositories:
+    get:
+      tags:
+      - "Repositories"
+      summary: "Find Repositories"
+      description: "Returns Repositories"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "q"
+        in: "query"
+        required: false
+        type: "string"
+        items:
+          type: "string"
+          enum:
+          - "fork"
+          - "in"
+          - "language"
+          - "size"
+        collectionFormat: "multi"
+      - name: "sort"
+        in: "query"
+        required: false
+        type: "string"
+        items:
+          type: "string"
+          enum:
+          - "stars"
+          - "forks"
+          - "updated"
+      - name: "order"
+        in: "query"
+        required: false
+        type: "string"
+        items:
+          type: "string"
+          enum:
+          - "asc"
+          - "desc"
+          default: "desc"
+      - name: "results"
+        in: "query"
+        required: false
+        type: "number"
+        maximum: 1000
+        description: "Number of search results returns"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+             $ref: "#/definitions/Repositories"
+definitions:
+  Repositories:
+    type: "object"
+    required:
+    - "total_count"
+    properties:
+      total_count:
+        type: "number"
+      incomplete_results:
+        type: "boolean"
+      items:
+        type: "array"
+        items:
+          $ref: "#/definitions/items"
+  items:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      id:
+        type: "number"
+      name:
+        type: "string"
+      full_name:
+        type: "string"
+      owner:
+        $ref: "#/definitions/owner"
+      private:
+        type: "boolean"
+      description:
+        type: "string"
+      language:
+        type: "string"
+      score:
+        type: "number"
+      fork:
+        type: "boolean"
+      url:
+        type: "string"
+  owner:
+    type: "object"
+    properties:
+      login:
+        type: "string"
+      id:
+        type: "string"
+      avatar_url:
+        type: "string"
+      gravatar_id:
+        type: "string"
+      url:
+        type: "string"
+      type:
+        type: "string"
+
