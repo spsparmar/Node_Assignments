@@ -3,40 +3,26 @@ info:
   description: "Starwars API."
   version: "1.0.0"
   title: "SWAPI"
-
+host: "swapi.co"
+basePath: "/api/"
 tags:
 - name: "Vehicle"
   description: "Everything about your Vehicle"
-  externalDocs:
-    description: "Find out more"
-    url: "http://swagger.io"
 - name: "People"
   description: "Everything about your People"
-  externalDocs:
-    description: "Find out more"
-    url: "http://swagger.io"    
 - name: "Starship"
   description: "Everything about your Starship"
-  externalDocs:
-    description: "Find out more"
-    url: "http://swagger.io"
 - name: "Species"
   description: "Everything about your Species"
-  externalDocs:
-    description: "Find out more"
-    url: "http://swagger.io"
-    
 schemes:
 - "http"
 paths:
-  
   /Vehicle:
     get:
       tags:
       - "Vehicle"
       summary: "Find list of vehicles"
       description: "Returns a List of vehicle"
-      operationId: "getVehicles"
       produces:
       - "application/json"
       responses:
@@ -52,7 +38,6 @@ paths:
       - "Vehicle"
       summary: "Find Vehicle by ID"
       description: "Returns a single vehicle"
-      operationId: "getVehicleById"
       produces:
       - "application/json"
       parameters:
@@ -60,24 +45,27 @@ paths:
         in: "path"
         description: "ID of Vehicle to return"
         required: true
-        type: "integer"
-        format: "int64"
+        type: "number"
+      - name: "q"
+        in: "query"
+        required: false
+        type: "string"
+        items:
+          type: "string"
+          enum:
+          - "name"
+          - "model"
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/Vehicle"
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Vehicle not found"
   /Vehicle/schema:
     get:
       tags:
       - "Vehicle"
       summary: "Find Vehicle Schema"
       description: "Returns a json schema"
-      operationId: "getschema"
       produces:
       - "application/json"
       responses:
@@ -91,7 +79,6 @@ paths:
       - "People"
       summary: "Find list of People"
       description: "get all the people resources"
-      operationId: "getpeople"
       produces:
       - "application/json"
       responses:
@@ -105,7 +92,6 @@ paths:
       - "People"
       summary: "Find peoplee by ID"
       description: "get a specific people resource"
-      operationId: "getpeopleById"
       produces:
       - "application/json"
       parameters:
@@ -113,24 +99,26 @@ paths:
         in: "path"
         description: "ID of people to return"
         required: true
-        type: "integer"
-        format: "int64"
+        type: "number"
+      - name: "q"
+        in: "query"
+        required: false
+        type: "string"
+        items:
+          type: "string"
+          enum:
+          - "name"
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/people"
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Peoplele not found"
   /People/schema:
     get:
       tags:
       - "People"
       summary: "Return Schema"
       description: "Returns a json Schema"
-      operationId: "getPeopleSchema"
       produces:
       - "application/json"
       responses:
@@ -144,7 +132,6 @@ paths:
       - "Starship"
       summary: "Find list of starships"
       description: "Returns a List of starship"
-      operationId: "getstarships"
       produces:
       - "application/json"
       responses:
@@ -158,7 +145,6 @@ paths:
       - "Starship"
       summary: "Find starship by ID"
       description: "Returns a single starship"
-      operationId: "getstarshipById"
       produces:
       - "application/json"
       parameters:
@@ -166,24 +152,27 @@ paths:
         in: "path"
         description: "ID of starship to return"
         required: true
-        type: "integer"
-        format: "int64"
+        type: "number"
+      - name: "q"
+        in: "query"
+        required: false
+        type: "string"
+        items:
+          type: "string"
+          enum:
+          - "name"
+          - "model"
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/starship"
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "starship not found"
   /starship/schema:
     get:
       tags:
       - "Starship"
       summary: "Find starship by ID"
       description: "Returns a json schema"
-      operationId: "getStarshipSchema"
       produces:
       - "application/json"
       responses:
@@ -191,14 +180,12 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/starship"
-            
   /species:
     get:
       tags:
       - "Species"
       summary: "Find list of species"
       description: "get all the species resources"
-      operationId: "getspecies"
       produces:
       - "application/json"
       responses:
@@ -212,7 +199,6 @@ paths:
       - "Species"
       summary: "Find speciese by ID"
       description: "get a specific species resource"
-      operationId: "getspeciesById"
       produces:
       - "application/json"
       parameters:
@@ -220,17 +206,20 @@ paths:
         in: "path"
         description: "ID of species to return"
         required: true
-        type: "integer"
-        format: "int64"
+        type: "number"
+      - name: "q"
+        in: "query"
+        required: false
+        type: "string"
+        items:
+          type: "string"
+          enum:
+          - "name"
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/species"
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "speciesle not found"
   /species/schema:
     get:
       tags:
@@ -245,7 +234,6 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/species"
-  
 definitions:
   Vehicle:
     type: "object"
@@ -283,7 +271,6 @@ definitions:
         type: "string"
       edited:
         type: "string"
-
   people:
     type: "object"
     required:
@@ -310,15 +297,23 @@ definitions:
         type: "string"
       films:
         type: "array"
+        items:
+          type: "string"
         example: "http://swapi.co/api/planets/1/"
       species:
         type: "array"
+        items:
+          type: "string"
         example: "http://swapi.co/api/species/1/"
       starships:
         type: "array"
+        items:
+          type: "string"
         example: "http://swapi.co/api/starships/12/"
       vehicles:
         type: "array"
+        items:
+          type: "string"
         example: "http://swapi.co/api/vehicles/14/"
       url:
         type: "string"
@@ -326,7 +321,6 @@ definitions:
         type: "string"
       edited:
         type: "string"
-        
   starship:
     type: "object"
     required:
@@ -368,7 +362,6 @@ definitions:
         type: "string"
       edited:
         type: "string"
-        
   species:
     type: "object"
     required:
@@ -398,9 +391,13 @@ definitions:
         type: "string"
       films:
         type: "array"
+        items:
+          type: "string"
         example: "http://swapi.co/api/films/1/"
       species:
         type: "array"
+        items:
+          type: "string"
         example: "http://swapi.co/api/species/1/"
       url:
         type: "string"
