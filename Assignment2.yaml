@@ -191,7 +191,6 @@ paths:
         required: false
         type: "string"
       responses:
-      responses:
         200:
           description: "successful operation"
           schema:
@@ -210,6 +209,7 @@ paths:
         description: "ID of species to return"
         required: true
         type: "number"
+      responses:
         200:
           description: "successful operation"
           schema:
@@ -399,4 +399,3 @@ definitions:
         type: "string"
       edited:
         type: "string"
-
