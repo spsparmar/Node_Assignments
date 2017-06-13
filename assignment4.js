@@ -6,7 +6,7 @@ console.log("============");
 
 function myReadfile(index) {
   if(index == fileArray.length)
-  	return;
+    return;
   fs.readFile(fileArray[index], 'utf8', function(error, data) {
     console.log(data);
     console.log("============");
