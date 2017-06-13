@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   description: "The Search API is optimized to help you find the specific item you're looking for (e.g., a specific user, a specific file in a repository, etc.)."
-  version: "1.0.0"
+  version: "3"
   title: "Git Hub Search"
 host: "developer.github.com"
 basePath: "/v3/search"
