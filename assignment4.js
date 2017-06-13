@@ -13,4 +13,4 @@ function myreadfile(index)	{
 		
 	});
 }
-readfile(0);
+myreadfile(0);
