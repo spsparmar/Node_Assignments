@@ -9,7 +9,7 @@ tags:
 - name: "Repositories"
   description: "Explore Search Repositories"
 schemes:
-- "http"
+- "https"
 paths:
   /Repositories:
     get:
