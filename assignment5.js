@@ -1,31 +1,14 @@
 var fs = require('fs');
 
-var file1= function() {
-  fs.readFile('file1', 'utf8', function(error, data) {
-    console.log(data); console.log("============");
+var fileReader= function(file_name) {
+  fs.readFile(file_name, 'utf8', function(error, data) {
+    console.log(data);
+    console.log("============");
     return new Promise( function(resolve, reject) {
-      resolve('file1_done');
-    });
-  });
-};
-
-var file2= function() {
-  fs.readFile('file2', 'utf8', function(error, data) {
-    console.log(data); console.log("============");
-    return new Promise( function(resolve, reject) {
-      resolve('file2_done');
-    });
-  });
-};
-
-var file3= function() {
-  fs.readFile('file3', 'utf8', function(error, data) {
-    console.log(data); console.log("============");
-    return new Promise( function(resolve, reject) {
-      resolve('file3_done');
+      resolve(file_name+'file_done');
     });
   });
 };
 
 console.log("============");
-Promise.all([file1(),file2(),file3()]);
+Promise.all([fileReader('file1'),fileReader('file2'),fileReader('file3')]);
