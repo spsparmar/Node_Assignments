@@ -22,3 +22,4 @@ fileReader('file1')
  .then(function() {
     return fileReader('file3')
   });
+
