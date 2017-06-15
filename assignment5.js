@@ -8,7 +8,7 @@ var fileReader = function(fileName) {
 
       if(error)
         return reject(fileName + 'file not Done');
-      resolve(fileName +'fileDone');
+      resolve(fileName + 'fileDone');
     });
   });
 };
