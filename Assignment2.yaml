@@ -1,19 +1,31 @@
 swagger: "2.0"
 info:
   description: "Starwars API."
-  version: "1.0.0"
+  version: ""
   title: "SWAPI"
 host: "swapi.co"
-basePath: "/api/"
+basePath: "/api"
 tags:
 - name: "Vehicle"
   description: "Everything about your Vehicle"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swapi.co/documentation#vehicles"
 - name: "People"
   description: "Everything about your People"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swapi.co/documentation#people"
 - name: "Starship"
   description: "Everything about your Starship"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swapi.co/documentation#starships"
 - name: "Species"
   description: "Everything about your Species"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swapi.co/documentation#species"
 schemes:
 - "http"
 paths:
@@ -220,7 +232,6 @@ paths:
       - "Species"
       summary: "Return Schema"
       description: "Returns a json Schema"
-      operationId: "getSpeciesschema"
       produces:
       - "application/json"
       responses:
@@ -279,8 +290,10 @@ definitions:
         type: "string"
       gender:
         type: "string"
+        example: "brown"
       hair_color:
         type: "string"
+        example: "black"
       height:
         type: "string"
       mass:
@@ -293,22 +306,22 @@ definitions:
         type: "array"
         items:
           type: "string"
-        example: "http://swapi.co/api/planets/1/"
+        example: "[http://swapi.co/api/planets/1/]"
       species:
         type: "array"
         items:
           type: "string"
-        example: "http://swapi.co/api/species/1/"
+        example: "[http://swapi.co/api/species/1/]"
       starships:
         type: "array"
         items:
           type: "string"
-        example: "http://swapi.co/api/starships/12/"
+        example: "[http://swapi.co/api/starships/12/]"
       vehicles:
         type: "array"
         items:
           type: "string"
-        example: "http://swapi.co/api/vehicles/14/"
+        example: "[http://swapi.co/api/vehicles/14/]"
       url:
         type: "string"
       created:
@@ -387,12 +400,12 @@ definitions:
         type: "array"
         items:
           type: "string"
-        example: "http://swapi.co/api/films/1/"
+        example: "[http://swapi.co/api/films/1/]"
       species:
         type: "array"
         items:
           type: "string"
-        example: "http://swapi.co/api/species/1/"
+        example: "[http://swapi.co/api/species/1/]"
       url:
         type: "string"
       created:
