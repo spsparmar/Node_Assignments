@@ -1,20 +1,21 @@
 // Problem 1: Complete the secondLargest function which takes in an array of numbers in input and return the second biggest number in the array. (without using sort)?
 function secondLargest(array) {
-  var max1, max2, index; 
-  max1 = array[0], max2 = array[1]; 
-  
-  for(index = 1; index < n; index++) { 
-    if(array[index] > max1) {
-    max2 = max1; 
-      max1 = array[index]; 
+  var max1, max2, i;
+
+  max1 = array[0], max2 = array[1];
+
+  for(i = 1; i < array.length; i++) {
+    if(array[i] > max1) {
+      max2 = max1;
+      max1 = array[i];
+    }
+    else
+      if(array[i] > max2 && array[i] != max1)
+        max2 = array[i];
   }
-  else
-    if(array[index] > max2 && array[index] != max1 || max1 == max2) 
-        max2 = array[index]; 
-  }
- return max2;
-} 
-  
+  return max2;
+}
+
 // Problem 2: Complete the calculateFrequency function that takes lowercase string as input and returns frequency of all english alphabet. (using only array, no in-built function)
 function calculateFrequency(string) {
   var obj = {};
@@ -22,13 +23,10 @@ function calculateFrequency(string) {
   for(var i=0;i<string.length;i++) {
     var c = string.charAt(i);
   
-    if( !(c >= 'a' && c <= 'z')
+    if( !(c >= 'a' && c <= 'z') )
     continue;
   
-    if(obj[c])
-    obj[c]++;
-    else 
-      obj[c]=1;
+    (obj[c]) ? obj[c]++ : obj[c]=1;
   }
   return obj;
 }
@@ -55,8 +53,8 @@ function unflatten(flatObject) {
   var result = {}
   for (var i in flatObject) {
     var keys = i.split('.')
-    keys.reduce(function(previous, index, j) {
-      return previous[index] || (previous[index] = isNaN(Number(keys[j + 1])) ? (keys.length - 1 == j ? flatObject[i] : {}) : [])
+    keys.reduce(function(array, current, index) {
+      return array[current] || (array[current] = isNaN(Number(keys[index + 1])) ? (keys.length - 1 == index ? flatObject[i] : {}) : [])
     }, result)
   }
   return result
