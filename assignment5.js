@@ -1,13 +1,13 @@
 var fs = require('fs');
 
-var fileReader = function(fileName) {
-  return new Promise( (resolve, reject) => {
-    fs.readFile(fileName, 'utf8', function(error, data) {
+var fileReader = (fileName) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(fileName, 'utf8', (error, data) => {
       console.log(data); 
       console.log("============");
 
       if(error)
-        return reject(fileName + 'file not Done');
+        return reject(error);
       resolve(fileName + 'fileDone');
     });
   });
@@ -15,11 +15,16 @@ var fileReader = function(fileName) {
 
 console.log("============");
 
-fileReader('file1')
- .then(function() {
-    return fileReader('file2')
+fileReader('file1').catch(() => {
+       console.log("error in file1");
   })
- .then(function() {
+ .then(() => {
+    return fileReader('file2')
+  }).catch(() => {
+       console.log("Error in file2");
+  })
+ .then(() => {
     return fileReader('file3')
+  }).catch(() => {
+       console.log("error in file3");
   });
-
