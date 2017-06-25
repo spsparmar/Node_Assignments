@@ -21,10 +21,10 @@ fileReader('file1').catch(() => {
  .then(() => {
     return fileReader('file2')
   }).catch(() => {
-       console.log("Error in file2");
+      console.log("Error in file2");
   })
  .then(() => {
     return fileReader('file3')
   }).catch(() => {
-       console.log("error in file3");
+      console.log("error in file3");
   });
