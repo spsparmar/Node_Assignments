@@ -10,7 +10,7 @@ function myReadfile(index) {
   fs.readFile(fileArray[index], 'utf8', function(error, data) {
     console.log(data);
     console.log("============");
-    myReadfile(index+1);
+    myReadfile(index + 1);
   });
 }
 
