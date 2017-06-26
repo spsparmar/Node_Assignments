@@ -15,16 +15,12 @@ var fileReader = (fileName) => {
 
 console.log("============");
 
-fileReader('file1').catch(() => {
-       console.log("error in file1");
-  })
+fileReader('file1')
  .then(() => {
     return fileReader('file2')
-  }).catch(() => {
-      console.log("Error in file2");
   })
  .then(() => {
     return fileReader('file3')
   }).catch(() => {
-      console.log("error in file3");
+      console.log("error");
   });
