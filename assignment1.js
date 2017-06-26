@@ -54,7 +54,7 @@ function unflatten(flatObject) {
   for (var i in flatObject) {
     var keys = i.split('.')
     keys.reduce(function(array, current, index) {
-      return array[current] || (array[current] = isNaN(Number(keys[index + 1])) ? (keys.length - 1 == index ? flatObject[i] : {}) : [])
+      return array[current] || (array[current] = isNaN(Number(keys[index])) ? (keys.length - 1 == index ? flatObject[i] : {}) : [])
     }, result)
   }
   return result
