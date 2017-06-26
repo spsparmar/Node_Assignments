@@ -1,5 +1,4 @@
 var fs = require('fs');
-
 var fileArray = ['file1', 'file2', 'file3', 'file4', 'file5'];
 
 console.log("============");
