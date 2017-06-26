@@ -1,17 +1,24 @@
 var fs = require('fs');
 
-var fileArray= ['file1', 'file2', 'file3', 'file4', 'file5'];
+var fileArray = ['file1', 'file2', 'file3', 'file4', 'file5'];
 
 console.log("============");
 
 function myReadfile(index) {
-  if(index == fileArray.length)
+  if(index === fileArray.length)
     return;
+
   fs.readFile(fileArray[index], 'utf8', function(error, data) {
-    console.log(data);
-    console.log("============");
-    myReadfile(index + 1);
+    try {
+      console.log(data);
+      console.log("============");
+    }
+    catch(error) {
+      console.log(error + "unable to read file");
+    }
+    finally {
+      myReadfile(index + 1);
+    }
   });
 }
-
 myReadfile(0);
