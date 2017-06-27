@@ -1,7 +1,6 @@
 {
-  "name": "thirdpartyapi",
+  "name": "mogodbassignment",
   "version": "1.0.0",
-  "description": "my first project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,12 +16,11 @@
     "url": "https://github.com/spsparmar/Node_Assignments/issues"
   },
   "homepage": "https://github.com/spsparmar/Node_Assignments#readme",
+  "description": "ERROR: No README data found!",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "request": "^2.81.0"
   },
-  "devDependencies": {
-    "nodemon": "^1.11.0"
-  }
+  "devDependencies": {}
 }
