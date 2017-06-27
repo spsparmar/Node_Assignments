@@ -67,7 +67,7 @@ function unflatten(flatObject) {
           array[current] = {};
 
           if(keys.length - 1 === index)
-          array[current] = flatObject[i];
+            array[current] = flatObject[i];
         }
       }
       return array[current];
