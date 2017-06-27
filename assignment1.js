@@ -26,9 +26,10 @@ function calculateFrequency(string) {
     
     if(obj[char]) {
       obj[char]++;
+      continue;
     }
-    else
-      obj[char] = 1;
+    
+    obj[char] = 1;
   }
   return obj;
 }
